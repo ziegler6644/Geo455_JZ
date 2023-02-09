@@ -1,2 +1,2 @@
 # Geo455_JZ
-ziegler6644.github.io/geo455_jz
+https://ziegler6644.github.io/Geo455_JZ/
