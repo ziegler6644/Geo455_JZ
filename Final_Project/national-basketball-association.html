@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en"><!-- InstanceBegin template="/Templates/sports-map.dwt" codeOutsideHTMLIsLocked="false" -->
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+		<!-- InstanceBeginEditable name="doctitle" -->
+		<meta name="description" content="Interactive map showing the arena locations for all 30 NBA teams, including the Golden State Warriors, LA Lakers and Boston Celtics" />
+		<title>Map showing NBA Team Locations</title>
+<!-- InstanceEndEditable -->
+    	<link href="../stylesheet/reset.css" rel="stylesheet" type="text/css" />
+    	<link href="../stylesheet/sitewide-2018.css" rel="stylesheet" type="text/css" />
+    	<link href="../stylesheet/style-2021.css" rel="stylesheet" type="text/css" />
+    	<link rel="shortcut icon" href="../images/favicon.ico" />
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    	<script src="https://kit.fontawesome.com/67f4b7f194.js" crossorigin="anonymous"></script>
+    	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKT4xcP59LbA7c1yIoc0ouap0q8Y3zVHo"></script>
+    <!-- Google Tag Manager -->
+    	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+															  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+					'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+									})(window,document,'script','dataLayer','GTM-TJJRQCJ');</script>
+    <!-- End Google Tag Manager -->
+    	<!-- InstanceBeginEditable name="map stadium locations" -->	 
+		<script src="../js/map-nba.js"></script>
+<!-- InstanceEndEditable -->
+	</head>
+	<body onload="initialize()">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJJRQCJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><!-- #BeginLibraryItem "/public_html/stadiummaps/library/sticky-header.lbi" -->
+		<header class="navigation">
+    		<div class="container">
+        		<div class="logo-wrapper-2">
+					<a href="../index.html" class="logo">Stadium Maps</a>
+				</div>
+            	<nav>
+            		<ul class="nav-menu">
+						<li><a href="../sports-maps.html">Maps</a></li>
+      					<li><a href="../sports-facts.html">Stats</a></li>
+      					<li><a href="../photos.html">Photos</a></li>
+      					<li><a href="../about.html">About</a></li>
+      					<li><a href="../contact.html">Contact</a></li>
+              		</ul>
+            	</nav>
+            	<div class="nav-toggle">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</div>
+        	</div>
+		</header><!-- #EndLibraryItem -->
+		<main id="stickycont">
+			<div class="container whitebox">
+			<div id="sportscont">
+				<div id="sportsheaderleft">
+					<div class="underlinesports">
+					<!-- InstanceBeginEditable name="sports league title" -->
+				<h1>NBA Teams Map</h1>
+<!-- InstanceEndEditable -->
+					</div>
+				</div>
+				<div id="sportsheaderright"><!-- #BeginLibraryItem "/Library/overlay.lbi" -->
+					<div id="myNav" class="overlay">
+						<!-- Button to close the overlay navigation -->
+  						<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  						<div class="overlay-content"><!-- Start Overlay content -->
+							<h1>How do I use this map?</h1>
+							<p>You can use this map in two ways ...</p>
+							<h2>Step One (Option A)</h2>
+							<p>Click on the name of the sports team from the menu on the right-hand side of the map. An information bubble containing information about the sports team will then appear over the marker.</p>
+							<h2>Step One (Option B)</h2>
+							<p>Or click on one of the markers on the map, the information bubble will then appear over the marker.</p>
+							<h2>Step Two (Options A &amp; B)</h2>
+							<p>Click the + navigation symbol on the left hand size of the map to zoom in, and see the sports ground in more detail.</p>
+							<h2>Step Three (Options A &amp; B)</h2>
+							<p>Select another sports ground by either clicking on the name of the sports team on the right hand side of the map or by clicking another marker on the map.</p>
+						</div><!-- end overlay content -->
+					</div>
+					<span class="instructions" onclick="openNav()">How do I use this map?</span>
+<script>
+	function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+}
+
+/* Close when someone clicks on the "x" symbol inside the overlay */
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+}
+</script>	<!-- #EndLibraryItem --></div>
+				<!-- InstanceBeginEditable name="alert" -->
+				<!-- InstanceEndEditable -->
+				<div id="mapholder">
+					<div id="map_canvas"></div>
+						<!--<div id="map-usage">
+						<h2>Map currently not available</h2>
+						<p>This website is currently extremely popular and we have unfortunately reached our maximum usage allowance for the Google Maps API this month. To avoid incurring additional charges this map is temporarily unavailable.</p> 
+						<p>But don't worry, you will be able to view this map again (for free) at the beginning of next month. If you'd like to be notified when it becomes available please provide us with your email address and we will send you a reminder.</p>
+							<div class="buttonspace">
+								<a class="button buttonblue" href="mailto:hello@stadium-maps.com?subject=Notify me when stadium maps are back online">hello@stadium-maps.com</a>
+							</div>	
+					</div>-->
+				</div>
+				<div id="legend">
+					<h5>Teams</h5>
+				<!-- InstanceBeginEditable name="leaguename" -->
+					<div id="side_bar" class="teams30"></div>
+<!-- InstanceEndEditable -->
+				</div>
+			</div>
+				<div class="map-date">
+					<div class="datestamp">Last updated <!-- InstanceBeginEditable name="date-updated" -->
+					  <time datetime="2022-06-19">June 19th, 2022</time><!-- InstanceEndEditable -->
+				</div>
+			</div>
+		</div>
+			<!-- InstanceBeginEditable name="trainline" -->
+			<!-- InstanceEndEditable -->
+		<div id="featuregrey">
+			<div class="container whitebox">
+				<!-- InstanceBeginEditable name="snapshot" -->
+				<h3>Snapshot of the NBA</h3>
+				<p>There are 30 teams in the NBA that are evenly split between the East and West conferences. 29 of the NBA teams are based in the USA, with one solitary Canadian team - the <strong>Toronto Raptors</strong>. California has four NBA teams (which is the most in any state) while Texas has three. 11 NBA teams share their arena's with NHL teams, while the Crypto.com Arena in Los Angeles is the home to three teams; the LA Lakers, the LA Clippers and the LA Kings of the NHL. NBA game attendances range from 14,000 up to 21,000 at the United Center, home of the <strong>Chicago Bulls</strong>. The most successful teams in the NBA are the <strong>Boston Celtics</strong> and the <strong>LA Lakers</strong> who have both won 17 NBA Championships, however, success isn’t very well spread throughout the league, 40% of all NBA teams have never even one once including big teams like the <strong>Phoenix Suns</strong> and the <strong>Indiana Pacers</strong>.</p>
+				<p><a href="../facts/nba-teams-popularity.html">The NBA popularity table</a></p>
+		<!-- InstanceEndEditable -->
+				<div class="contrel scroll-module"><a href="#feature" class="scroll-down"></a>
+				</div><!-- end relative container -->	  
+			</div><!-- end container -->
+		</div><!-- end featuregrey -->
+<div id="feature">
+	<div class="container">
+		<div class="championsgrid">
+			<div class="championshold">
+			<!-- InstanceBeginEditable name="champions" -->
+			<h3>NBA Champions</h3>
+				<div class="champions">
+					<h4>Boston Celtics</h4>
+					<p class="bignumber">17</p>
+					<p>First</p>
+				</div>
+				<div class="champions">
+					<h4>Los Angeles Lakers</h4>
+					<p class="bignumber">17</p>
+					<p>Second</p>
+				</div>
+				<div class="champions">
+					<h4>Golden State Warriors</h4>
+					<p class="bignumber">7</p>
+					<p>Third</p>
+				</div>
+				<div class="champions">
+					<h4>Golden State Warriors</h4>
+					<p class="bignumber">7</p>
+					<p>Current Champion</p>
+				</div>
+			<!-- InstanceEndEditable -->
+			</div><!-- end champions hold -->
+			<div class="buttoncontainer">
+			<a class="button buttontrans" href="../facts/national-champions.html">Champions Table</a> 
+			</div>
+		</div><!-- end champions grid -->
+	</div><!-- end container -->
+</div><!-- end feature -->
+<div class="container">
+	<div class="whitebox bottomarticles">
+		<h2>More Sports Maps</h2>
+			<div class="flexgrid">
+		<!-- InstanceBeginEditable name="othermaps" -->
+				<div class="griditemthird cta-icon">
+					<a href="national-hockey-league.html" title="NHL Map">
+						<div class="callimage">
+							<img src="../images/site-icons/ice-hockey-puck.png" alt="ice hockey puck"/>
+						</div>
+						<h4>NHL Map</h4>
+					</a>
+				</div>
+				<div class="griditemthird cta-icon">
+					<a href="major-league-baseball.html" title="major league baseball map">
+						<div class="callimage">
+							<img src="../images/site-icons/baseball.png" alt="Baseball icon"/>
+						</div>
+						<h4>Major League Baseball</h4>
+					</a>
+				</div>
+				<div class="griditemthird cta-icon">
+					<a href="canadian-football-league.html" title="NFL map">
+						<div class="callimage">
+							<img src="../images/site-icons/nfl.png" alt="NFL icon"/>
+						</div>
+						<h4>NFL Map</h4>
+					</a>
+				</div>
+		<!-- InstanceEndEditable -->
+			</div>	
+	</div>
+</div>
+</main><!-- #BeginLibraryItem "/public_html/stadiummaps/library/Responsive-Footer.lbi" -->
+			<div class="social">
+				<div class="container">
+					<h3>Connect with us on</h3>			
+					<ul>
+						<li>
+							<a href="https://twitter.com/stadiumbolt" target="_blank" title="Visit us on Twitter">
+								<i class="fab fa-twitter fa-2x"></i>
+							</a>
+						</li>
+  						<li>
+							<a href="https://www.facebook.com/stadiummaps/" target="_blank" title="Visit us on Facebook">
+								<i class="fab fa-facebook-square fa-2x"></i>
+							</a>
+						</li>
+						<li>
+							<a href="https://www.instagram.com/stadiumbolt/" target="_blank" title="Visit us on Instagram">		<i class="fab fa-instagram fa-2x"></i>
+							</a>
+						</li>
+						<li>
+							<a href="https://www.flickr.com/photos/71772317@N02/" target="_blank" title="Visit us on Flickr">
+								<i class="fab fa-flickr fa-2x"></i>
+							</a>
+						</li>
+  					</ul>
+  				</div>
+  			</div>
+			<footer>
+				<div class="container">
+					<div class="whitebox">
+						<div class="footcol">
+				<h5>About</h5>
+					<ul>
+  						<li><a href="../index.html" title="Home">Home</a></li>
+  						<li><a href="../about.html" title="About">About</a></li>
+  						<li><a href="../sports-maps.html" title="Sports Maps">Sports Maps</a></li>
+  						<li><a href="../sports-facts.html" title="Sports Facts">Sports Stats</a></li>
+  						<li><a href="../photos.html" title="Photos">Photos</a></li>
+					</ul>
+				</div>
+				<div class="footcol">
+				<h5>British Football Maps</h5>
+					<ul>
+  						<li><a href="english-premier-league.html" title="English Premier League Map">English Premier League</a></li>
+  						<li><a href="championship.html" title="English Championship Map">English Championship</a></li>
+  						<li><a href="league_one.html" title="English League One Map">English League One</a></li>
+  						<li><a href="scottish-premiership.html" title="Scottish Premiership Map">Scottish Premiership</a></li>
+  						<li><a href="../sports-maps.html" title="Sports Stadium Maps">More Maps &raquo;</a></li>
+					</ul>
+				</div>
+				<div class="footcol">
+				<h5>International Maps</h5>
+					<ul>
+  						<li><a href="champions-league.html" title="Champions League Map ">Champions League</a></li>
+  						<li><a href="major-league-soccer.html" title="Major League Soccer Map">Major League Soccer</a></li>
+  						<li><a href="national-basketball-association.html" title="National Basketball Association Map">National Basketball Association</a></li>
+  						<li><a href="major-league-baseball.html" title="Major League Baseball Map">Major League Baseball</a></li>
+  						<li><a href="../sports-maps.html" title="Sports Stadium Maps">More Maps &raquo;</a></li>
+					</ul>
+				</div>
+				<div class="footcol">
+				<h5>Sports Articles</h5>
+					<ul>
+						<li><a href="../facts/stadium_updates.html" title="Stadium Updates">Stadium Updates</a></li>
+						<li><a href="../facts/sports-franchises.html" title="Sports Franchises">Sports Franchises</a></li>
+						<li><a href="../facts/national-champions.html" title="National Champions">National Champions</a></li>
+						<li><a href="../facts/epl_facebook_table.html" title="English Premier League Facebook Table">EPL Social Media</a></li>
+						<li><a href="../sports-facts.html" title="Sports Articles">More Sports Articles &raquo;</a></li>
+					</ul>
+				</div><!-- end footcol -->
+			</div><!-- end whitebox -->
+		</div><!-- end container  -->
+		<div id="copy">
+			<div class="container">
+				<div class="whitebox">
+					<div class="onehalf" id="copy_left">  
+						Copyright &copy; 2021. All Rights Reserved
+					</div><!-- end copyright left -->
+					<div class="onehalf" id="copy_right">
+						<a href="../sitemap.html">Site Map</a>
+					</div><!-- end copyright right -->
+				</div>
+			</div>
+		</div>
+</footer>
+<!-- start new tracking -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41955704-1', 'stadium-maps.com');
+  ga('send', 'pageview');
+</script>
+<!-- end new tracking --><!-- #EndLibraryItem -->
+		<script src="../js/index.js"></script>
+	</body>
+<!-- InstanceEnd --></html>
